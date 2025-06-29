@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import './App.css'
+import { HiMenuAlt4 } from "react-icons/hi";
 
 function App() {
   const [count, setCount] = useState(0)
   return (
     <div className="landing-container">
+
+      {/* Menu Icon */}
+      <div className="menu-icon">
+        <HiMenuAlt4 className='icon' />
+      </div>
+
       {/* Header */}
       <div className="header">
         <div className="image-container">
           <img
-            src="/assets/PiattoPasta.png"
+            src="src\assets\PiattoPasta.png"
             alt="Pasta"
             className="pasta-image"
           />
@@ -42,7 +49,7 @@ function App() {
 
           <div className="form-group">
             <label>Data</label>
-            <input type="text" placeholder="gg/mm/aaaa" />
+            <input type="date" placeholder="gg/mm/aaaa" />
           </div>
 
           <div className="form-group">
@@ -55,7 +62,7 @@ function App() {
             </select>
           </div>
 
-          <button type="submit">PRENOTA IL TUO TAVOLO</button>
+          <button type="submit">PRENOTA</button>
         </form>
       </div>
     </div>
