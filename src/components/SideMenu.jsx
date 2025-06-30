@@ -9,8 +9,8 @@ const SideMenu = ({ isOpen, onClose }) => {
             <button className="close-btn" onClick={onClose}><IoClose className='close-icon'/></button>
             <ul>
                 <li><a href="#home">HO<br />ME</a></li>
-                <li><a href="#menu">ME <br /> NU</a></li>
-                <li><a href="#recensioni">RE <br /> CE<br />NS<br />IO<br />NI</a></li>
+                <li><a href="#menu">ME<br />NU</a></li>
+                <li><a href="#recensioni">RE<br />CE<br />NS<br />IO<br />NI</a></li>
             </ul>
         </div>
     </>
