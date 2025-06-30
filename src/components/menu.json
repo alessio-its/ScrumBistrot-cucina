@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "nome": "Spaghetti alla Carbonara",
+      "descrizione": "Pasta con uova, pecorino, guanciale e pepe nero."
+    },
+    {
+      "id": 2,
+      "nome": "Pizza Margherita",
+      "descrizione": "Pizza classica con pomodoro, mozzarella e basilico fresco."
+    },
+    {
+      "id": 3,
+      "nome": "Lasagna al Ragù",
+      "descrizione": "Strati di pasta fresca con ragù di carne, besciamella e parmigiano."
+    },
+    {
+      "id": 4,
+      "nome": "Insalata Caprese",
+      "descrizione": "Mozzarella di bufala, pomodori freschi e basilico con olio extravergine."
+    },
+    {
+      "id": 5,
+      "nome": "Tiramisù",
+      "descrizione": "Dolce tradizionale con savoiardi, caffè, mascarpone e cacao."
+    }
+  ]
+  

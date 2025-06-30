@@ -1,0 +1,25 @@
+body {
+    background-color: #266D47;
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5vw;
+}
+
+.menu-card {
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2vh;
+    margin-bottom: 2vh;
+}
+
+.menu-description {
+    margin: 0;
+}
+
+.menu-name {
+    margin: 0;
+}
