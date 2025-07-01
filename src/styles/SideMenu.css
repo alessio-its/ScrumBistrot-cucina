@@ -55,3 +55,13 @@ li {
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.menu-icon{
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 2.5vw;
+    overflow-y: hidden;
+    z-index: 1000;
+  }

@@ -2,10 +2,20 @@ body {
     background-color: #266D47;
 }
 
+.slowfood_logo{
+    width: 40vw;
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 5vh;
+    right: 4vw;
+  }
+
 .menu-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 5vw;
+    padding: 3vw;
 }
 
 .menu-card {
@@ -14,12 +24,54 @@ body {
     border-radius: 20px;
     padding: 2vh;
     margin-bottom: 2vh;
+    display: flex;
+}
+.card-description {
+    flex: 1;
+    margin-right: 3vw;
+}
+.card-price {
+    font-weight: 700;
+    font-size: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.menu-description {
+.dish-description {
     margin: 0;
 }
 
 .menu-name {
     margin: 0;
+}
+
+.menu-title {
+    text-align: center;
+    color: white;
+    margin: 2vw;
+    margin-top: 5vw;
+    font-weight: 700;
+    width: 50%;
+}
+.ilnostro-text {
+    font-size: 8vw;
+    margin: 0;
+    font-weight: 700;
+}
+.menu-text {
+    margin: 0;
+    font-size: 30vw;
+    line-height: 0.8;
+    padding-top: 1vh;
+    overflow: hidden;
+}
+
+
+.menu-description {
+    text-align: center;
+    color: white;
+    font-size: 6vw;
+    margin: 0;
+    padding: 2vh;
 }

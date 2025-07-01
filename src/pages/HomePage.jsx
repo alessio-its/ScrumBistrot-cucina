@@ -11,10 +11,10 @@ function HomePage() {
         <>
         <div className="landing-container">
 
-        {/* Menu Icon */}
+        {/*
         <div className="menu-icon" onClick={() => setMenuOpen(true)}>
             <img src={MenuIcon} alt="" className='icon'  />
-        </div>
+        </div>*/}
 
         {/* Header */}
         <div className="header">
@@ -69,7 +69,7 @@ function HomePage() {
             <button type="submit">PRENOTA</button>
             </form>
         </div>
-        <SideMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+        <SideMenu/>
         </div>
         
         <div className="dove-siamo">

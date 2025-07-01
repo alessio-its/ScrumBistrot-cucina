@@ -1,28 +1,74 @@
 [
-    {
-      "id": 1,
-      "nome": "Spaghetti alla Carbonara",
-      "descrizione": "Pasta con uova, pecorino, guanciale e pepe nero."
-    },
-    {
-      "id": 2,
-      "nome": "Pizza Margherita",
-      "descrizione": "Pizza classica con pomodoro, mozzarella e basilico fresco."
-    },
-    {
-      "id": 3,
-      "nome": "Lasagna al Ragù",
-      "descrizione": "Strati di pasta fresca con ragù di carne, besciamella e parmigiano."
-    },
-    {
-      "id": 4,
-      "nome": "Insalata Caprese",
-      "descrizione": "Mozzarella di bufala, pomodori freschi e basilico con olio extravergine."
-    },
-    {
-      "id": 5,
-      "nome": "Tiramisù",
-      "descrizione": "Dolce tradizionale con savoiardi, caffè, mascarpone e cacao."
-    }
-  ]
-  
+  {
+    "id": 1,
+    "nome": "Spaghetti alla Carbonara",
+    "descrizione": "Pasta con uova, pecorino, guanciale e pepe nero.",
+    "prezzo": 12.50
+  },
+  {
+    "id": 3,
+    "nome": "Lasagna al Ragù",
+    "descrizione": "Strati di pasta fresca con ragù di carne, besciamella e parmigiano.",
+    "prezzo": 10.00
+  },
+  {
+    "id": 7,
+    "nome": "Risotto ai Funghi Porcini",
+    "descrizione": "Riso carnaroli mantecato con funghi porcini e parmigiano.",
+    "prezzo": 11.00
+  },
+  {
+    "id": 12,
+    "nome": "Gnocchi al Pesto",
+    "descrizione": "Gnocchi di patate con pesto di basilico, pinoli e parmigiano.",
+    "prezzo": 9.00
+  },
+  {
+    "id": 8,
+    "nome": "Tagliata di Manzo",
+    "descrizione": "Carne di manzo grigliata con rucola, scaglie di grana e aceto balsamico.",
+    "prezzo": 16.00
+  },
+  {
+    "id": 9,
+    "nome": "Melanzane alla Parmigiana",
+    "descrizione": "Melanzane fritte a strati con sugo di pomodoro, mozzarella e parmigiano.",
+    "prezzo": 9.50
+  },
+  {
+    "id": 2,
+    "nome": "Pizza Margherita",
+    "descrizione": "Pizza classica con pomodoro, mozzarella e basilico fresco.",
+    "prezzo": 8.00
+  },
+  {
+    "id": 4,
+    "nome": "Insalata Caprese",
+    "descrizione": "Mozzarella di bufala, pomodori freschi e basilico con olio extravergine.",
+    "prezzo": 7.50
+  },
+  {
+    "id": 6,
+    "nome": "Bruschette Miste",
+    "descrizione": "Pane tostato con pomodoro, aglio, olio, olive e paté di olive.",
+    "prezzo": 6.00
+  },
+  {
+    "id": 10,
+    "nome": "Patate al Forno",
+    "descrizione": "Patate rustiche cotte al forno con rosmarino e olio extravergine.",
+    "prezzo": 4.50
+  },
+  {
+    "id": 5,
+    "nome": "Tiramisù",
+    "descrizione": "Dolce tradizionale con savoiardi, caffè, mascarpone e cacao.",
+    "prezzo": 5.00
+  },
+  {
+    "id": 11,
+    "nome": "Panna Cotta ai Frutti di Bosco",
+    "descrizione": "Dolce al cucchiaio con salsa ai frutti di bosco.",
+    "prezzo": 4.50
+  }
+]

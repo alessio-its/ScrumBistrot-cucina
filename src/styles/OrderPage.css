@@ -1,0 +1,58 @@
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3vw;
+}
+
+.menu-card {
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2vh;
+    margin-bottom: 2vh;
+    display: flex;
+}
+.card-description {
+    flex: 1;
+    margin-right: 3vw;
+}
+
+.dish-description {
+    margin: 0;
+}
+
+.order-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-controls button {
+  padding: 0.3rem 0.6rem;
+  font-size: 1rem;
+}
+
+.order-footer {
+  position: fixed;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  background: #242424;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.order-footer button {
+  background: white;
+  color: #266D47;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
