@@ -24,17 +24,43 @@ function OrderPage() {
     });
   };
 
-  const totalePiatti = Object.values(ordine).reduce((a, b) => a + b, 0);
+    const totalePiatti = Object.values(ordine).reduce((a, b) => a + b, 0);
 
-  const confermaOrdine = () => {
-    const piattiOrdinati = menuData.filter(p => ordine[p.id]);
-    console.log("Ordine confermato:", piattiOrdinati.map(p => ({
-      nome: p.nome,
-      quantità: ordine[p.id]
-    })));
-    alert("Ordine confermato!");
-    setOrdine({});
-  };
+    const confermaOrdine = async () => {
+        const piattiOrdinati = menuData
+            .filter(p => ordine[p.id])
+            .map(p => ({
+            id: p.id,
+            quantità: ordine[p.id]
+            }));
+
+        const ordineJSON = {
+            piattiOrdinati
+        };
+
+        try {
+            const response = await fetch('http://172.30.88.112:3000/api/ordine', { // cambia URL con il tuo endpoint
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(ordineJSON)
+            });
+
+            if (!response.ok) {
+            throw new Error('Errore durante l\'invio dell\'ordine');
+            }
+
+            const data = await response.json();
+            console.log('Risposta del server:', data);
+            alert('Ordine confermato!' + data.message);
+            setOrdine({});
+        } catch (error) {
+            console.error('Errore:', error);
+            alert('Si è verificato un errore durante l\'invio dell\'ordine.');
+        }
+    };
+
 
   return (
     <>
