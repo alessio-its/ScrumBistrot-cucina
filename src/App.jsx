@@ -1,17 +1,10 @@
+import Table from "./Table.jsx";
+
 function App() {
-  const test = async () => {
-    const response = await fetch("http://localhost:3000/test", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    const result = await response.json();
-    console.log(result);
-  };
-
   return (
     <>
-      <button onClick={test}>Invia richiesta</button>
+      <h1 style={{ textAlign: "center" }}>Gestione degli ordini</h1>
+      <Table />
     </>
   );
 }

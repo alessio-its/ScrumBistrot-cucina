@@ -1,0 +1,85 @@
+/* Table.css */
+
+/* Container styling */
+.table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Basic table styling */
+.simple-table {
+  width: 80%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 400px;
+}
+
+.simple-table th,
+.simple-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.simple-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Desktop styling (larger screens) */
+@media (min-width: 1024px) {
+  .simple-table {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  .simple-table th,
+  .simple-table td {
+    padding: 14px 20px;
+  }
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 600px) {
+  .simple-table {
+    font-size: 12px;
+    min-width: unset;
+  }
+
+  .simple-table thead {
+    display: none;
+  }
+
+  .simple-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .simple-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .simple-table tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 10px;
+    color: #333;
+  }
+
+  .simple-table tbody td:last-child {
+    border-bottom: none;
+  }
+}
