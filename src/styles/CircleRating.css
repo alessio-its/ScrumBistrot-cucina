@@ -1,0 +1,44 @@
+.circle-rating {
+    display: flex;
+    gap: 4px;
+    height: 100%; /* o fissa se vuoi es: 40px */
+}
+
+.circle {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    border-radius: 50%;
+    border:1px solid #266D47;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.circle.full {
+    background-color: white;
+}
+.circle.full::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: #266D47;
+    left: 5.4%;
+    top: 4%;
+
+}
+
+.circle.empty {
+    background-color: white;
+}
+
+.circle.half::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #266D47;
+    left: 0;
+    top: 0;
+}

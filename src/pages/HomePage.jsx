@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { HiMenuAlt4 } from "react-icons/hi";
 import PiattoPasta from '../assets/PiattoPasta.png'; // Assuming you have a pasta image
 import SideMenu from '../components/SideMenu.jsx';
-import MenuIcon from '../assets/hamburger-icon.svg'; // Assuming you have a menu icon image
 import '../styles/HomePage.css'; // Assuming you have a CSS file for styling
 
 function HomePage() {

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import '../styles/ReviewPage.css';
+import SideMenu from '../components/SideMenu.jsx';
+import CircleRating from '../components/CircleRating.jsx';
 
 function ReviewPage() {
     const [reviews, setReviews] = useState([
-        { id: 1, name: "Alice", rating: 5, comment: "Fantastico sito!" },
-        { id: 2, name: "Luca", rating: 4, comment: "Molto utile e ben fatto." }
+        { id: 1, name: "Mario Rossi", rating: 4, comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue tortor ipsum, id finibus sapien fringilla quis. Vestibulum convallis magna eu viverra tristique. Aenean pharetra finibus nulla." },
+        { id: 2, name: "Franca Lai", rating: 3, comment: "Praesent sapien ipsum, sagittis ac est quis, bibendum convallis quam. Lorem ipsum dolor sit amet." },
+        { id: 3, name: "Giuseppe Bianchi", rating: 5, comment: "Curabitur venenatis feugiat molestie. Sed scelerisque porta aliquam. Nullam tellus nisl, blandit vel lorem id, feugiat consequat erat. Quisque bibendum mi at nulla convallis pellentesque." }
     ]);
 
     const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
@@ -21,29 +24,39 @@ function ReviewPage() {
         setNewReview({ name: '', rating: 5, comment: '' });
     };
 
-    const getAverageRating = () => {
-    if (reviews.length === 0) return 0;
-    const sum = reviews.reduce((acc, curr) => acc + Number(curr.rating), 0);
-    return sum / reviews.length;
-    };
-
-    const average = getAverageRating();
-    const fullStars = Math.floor(average);
-    const hasHalfStar = average - fullStars >= 0.5;
+    const average = reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
+    const roundedAvg = Math.round(average * 10) / 10;
 
     return (
-        <div className="review-page">
-            <h2>Recensioni</h2>
+        <div className="review-section">
+            <SideMenu/>
+            <h1 className="review-title">RECEN<br />SIONI</h1>
 
-            <div className="average-rating">
-                <p className="average-text">Media: {average.toFixed(1)} / 5</p>
-                <p className="stars">
-                    {'⭐'.repeat(fullStars)}
-                    {hasHalfStar && '½'}
-                </p>
+            <div className="average-box">
+                <span className="average-number">{roundedAvg}<span className="out-of">/5</span></span>
+                
+                <div className="average-box_right">
+                    <div className="stars">
+                        <CircleRating value={roundedAvg} />
+                    </div>
+                    <p className="review-count">BASATO SU {reviews.length} RECENSIONI</p>
+                </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="review-form">
+            <div className="review-list">
+                {reviews.map(r => (
+                    <div key={r.id} className="review-card">
+                        <hr />
+                        <h3>{r.name}</h3>
+                        <div className="stars small">
+                            <CircleRating value={r.rating} />
+                        </div>
+                        <p>{r.comment}</p>
+                    </div>
+                ))}
+            </div>
+
+            <form className="review-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="name"
@@ -57,8 +70,8 @@ function ReviewPage() {
                     value={newReview.rating}
                     onChange={handleChange}
                 >
-                    {[5, 4, 3, 2, 1].map((r) => (
-                        <option key={r} value={r}>{r} ⭐</option>
+                    {[5, 4, 3, 2, 1].map(r => (
+                        <option key={r} value={r}>{r}</option>
                     ))}
                 </select>
                 <textarea
@@ -68,18 +81,8 @@ function ReviewPage() {
                     onChange={handleChange}
                     required
                 />
-                <button type="submit">Invia</button>
+                <button type="submit">INVIA</button>
             </form>
-
-            <div className="review-list">
-                {reviews.map((review) => (
-                    <div key={review.id} className="review-card">
-                        <p className="review-name">{review.name}</p>
-                        <p className="review-rating">{'⭐'.repeat(review.rating)}</p>
-                        <p className="review-comment">{review.comment}</p>
-                    </div>
-                ))}
-            </div>
         </div>
     );
 }
