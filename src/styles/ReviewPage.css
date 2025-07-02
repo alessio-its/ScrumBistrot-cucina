@@ -22,7 +22,7 @@
     border-radius: 40px;
     display: flex;
     margin-bottom: 20px;
-    width: 90%;
+    width: 86%;
     padding-left: 2vw;
     padding-right: 2vw;
     padding-top: 2vw;
@@ -72,7 +72,7 @@
 
 .review-list {
     width: 90%;
-    height: 40vh;
+    height: 50vh;
     overflow-y: auto;
 }
 
@@ -96,39 +96,75 @@
 }
 
 .review-form {
-    margin-top: 20px;
+    width: 90%;
+    background-color: #2b2c2b;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+    font-size: 6vw;
+    color: #ffffff;
+    font-weight: 600;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2vh;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    color: #266D47;
+}
+
+.popup h2 {
+    font-size: 6vw;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.popup-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    position: absolute;
-    width: 100%;
-    background-color: white;
-    bottom: 0;
-    left: 0;
-    border-top-right-radius: 40px;
-    border-top-left-radius: 40px;
 }
 
-.review-form input,
-.review-form textarea,
-.review-form select {
-    padding: 10px;
+.popup-form input,
+.popup-form select,
+.popup-form textarea {
     border-radius: 20px;
-    border: none;
-    font-size: 14px;
-}
-
-.review-form button {
-    background-color: white;
-    color: #1e5232;
-    border: none;
-    border-radius: 20px;
+    border: 1px solid #ccc;
     padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
     font-size: 16px;
+    resize: none;
+    font-family: "Josefin Sans", sans-serif;
 }
 
-.review-form button:hover {
-    background-color: #ccc;
+.popup-form button {
+    background-color: #266D47;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
 }
+

@@ -1,3 +1,10 @@
 *{
   overflow-x: hidden;
 }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  width: 100vw;
+  font-family: "Josefin Sans", sans-serif;
+}

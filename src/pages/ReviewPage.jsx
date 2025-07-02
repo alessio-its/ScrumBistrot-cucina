@@ -9,6 +9,7 @@ function ReviewPage() {
         { id: 2, name: "Franca Lai", rating: 3, comment: "Praesent sapien ipsum, sagittis ac est quis, bibendum convallis quam. Lorem ipsum dolor sit amet." },
         { id: 3, name: "Giuseppe Bianchi", rating: 5, comment: "Curabitur venenatis feugiat molestie. Sed scelerisque porta aliquam. Nullam tellus nisl, blandit vel lorem id, feugiat consequat erat. Quisque bibendum mi at nulla convallis pellentesque." }
     ]);
+    const [showPopup, setShowPopup] = useState(false);
 
     const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
 
@@ -19,7 +20,7 @@ function ReviewPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newEntry = { ...newReview, id: Date.now() };
+        const newEntry = { ...newReview, id: Date.now(), rating: Number(newReview.rating) };
         setReviews([newEntry, ...reviews]);
         setNewReview({ name: '', rating: 5, comment: '' });
     };
@@ -56,33 +57,45 @@ function ReviewPage() {
                 ))}
             </div>
 
-            <form className="review-form" onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Il tuo nome"
-                    value={newReview.name}
-                    onChange={handleChange}
-                    required
-                />
-                <select
-                    name="rating"
-                    value={newReview.rating}
-                    onChange={handleChange}
-                >
-                    {[5, 4, 3, 2, 1].map(r => (
-                        <option key={r} value={r}>{r}</option>
-                    ))}
-                </select>
-                <textarea
-                    name="comment"
-                    placeholder="Scrivi la tua recensione"
-                    value={newReview.comment}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit">INVIA</button>
-            </form>
+            {showPopup && (
+            <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+                <div className="popup" onClick={e => e.stopPropagation()}>
+                    <h2>Lascia una recensione</h2>
+                    <form onSubmit={handleSubmit} className="popup-form">
+                        <input
+                            type="text"
+                            name="name"
+                            value={newReview.name}
+                            onChange={handleChange}
+                            placeholder="Il tuo nome"
+                            required
+                        />
+                        <select
+                            name="rating"
+                            value={newReview.rating}
+                            onChange={handleChange}
+                        >
+                            {[5, 4, 3, 2, 1].map(n => (
+                                <option key={n} value={n}>{n} {n == 1 ? "Stella" : "Stelle"}</option>
+                            ))}
+                        </select>
+                        <textarea
+                            name="comment"
+                            value={newReview.comment}
+                            onChange={handleChange}
+                            placeholder="Scrivi la tua recensione"
+                            required
+                        />
+                        <button type="submit">Invia</button>
+                    </form>
+                </div>
+            </div>
+            )}
+
+
+            <div className="review-form" onClick={() => setShowPopup(true)}>
+                Lascia una recensione
+            </div>
         </div>
     );
 }
