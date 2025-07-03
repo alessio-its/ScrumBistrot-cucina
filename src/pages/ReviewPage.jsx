@@ -1,17 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/ReviewPage.css';
 import SideMenu from '../components/SideMenu.jsx';
 import CircleRating from '../components/CircleRating.jsx';
 
 function ReviewPage() {
-    const [reviews, setReviews] = useState([
-        { id: 1, name: "Mario Rossi", rating: 4, comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue tortor ipsum, id finibus sapien fringilla quis. Vestibulum convallis magna eu viverra tristique. Aenean pharetra finibus nulla." },
-        { id: 2, name: "Franca Lai", rating: 3, comment: "Praesent sapien ipsum, sagittis ac est quis, bibendum convallis quam. Lorem ipsum dolor sit amet." },
-        { id: 3, name: "Giuseppe Bianchi", rating: 5, comment: "Curabitur venenatis feugiat molestie. Sed scelerisque porta aliquam. Nullam tellus nisl, blandit vel lorem id, feugiat consequat erat. Quisque bibendum mi at nulla convallis pellentesque." }
-    ]);
+    const [reviews, setReviews] = useState([]); // <-- parte vuoto
     const [showPopup, setShowPopup] = useState(false);
+    const [newReview, setNewReview] = useState({ nome: '', voto: 5, messaggio: '' });
 
-    const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
+    useEffect(() => {
+        fetch('http://172.30.88.62:3000/api/getreview')
+            .then(response => {
+                console.log(response);
+                if (!response.ok) throw new Error('Errore nel recupero delle recensioni');
+                return response.json();
+            })
+            .then(data => {
+                setReviews(data.sort((a, b) => b.id - a.id));
+            })
+            .catch(error => {
+                console.error('Errore durante il fetch:', error);
+            });
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,22 +30,48 @@ function ReviewPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newEntry = { ...newReview, id: Date.now(), rating: Number(newReview.rating) };
-        setReviews([newEntry, ...reviews]);
-        setNewReview({ name: '', rating: 5, comment: '' });
+        const newEntry = {
+            id: Date.now(),
+            nome: newReview.nome,
+            voto: Number(newReview.voto),
+            messaggio: newReview.messaggio
+        };
+
+        setReviews([newEntry, ...reviews]); // aggiorna subito il frontend
+        setNewReview({id: 1, nome: '', voto: 5, messaggio: '' });
+        setShowPopup(false);
+
+        fetch('http://172.30.88.62:3000/api/review', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newEntry) // invia come array
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nell\'invio della recensione');
+            }
+            console.log('Recensione inviata con successo');
+        })
+        .catch(error => {
+            console.error('Errore durante la fetch:', error);
+        });
     };
 
-    const average = reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
+    const average = reviews.length > 0
+        ? reviews.reduce((acc, r) => acc + r.voto, 0) / reviews.length
+        : 0;
+
     const roundedAvg = Math.round(average * 10) / 10;
 
     return (
         <div className="review-section">
-            <SideMenu/>
+            <SideMenu />
             <h1 className="review-title">RECEN<br />SIONI</h1>
 
             <div className="average-box">
                 <span className="average-number">{roundedAvg}<span className="out-of">/5</span></span>
-                
                 <div className="average-box_right">
                     <div className="stars">
                         <CircleRating value={roundedAvg} />
@@ -48,50 +84,49 @@ function ReviewPage() {
                 {reviews.map(r => (
                     <div key={r.id} className="review-card">
                         <hr />
-                        <h3>{r.name}</h3>
+                        <h3>{r.nome}</h3>
                         <div className="stars small">
-                            <CircleRating value={r.rating} />
+                            <CircleRating value={r.voto} />
                         </div>
-                        <p>{r.comment}</p>
+                        <p>{r.messaggio}</p>
                     </div>
                 ))}
             </div>
 
             {showPopup && (
-            <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-                <div className="popup" onClick={e => e.stopPropagation()}>
-                    <h2>Lascia una recensione</h2>
-                    <form onSubmit={handleSubmit} className="popup-form">
-                        <input
-                            type="text"
-                            name="name"
-                            value={newReview.name}
-                            onChange={handleChange}
-                            placeholder="Il tuo nome"
-                            required
-                        />
-                        <select
-                            name="rating"
-                            value={newReview.rating}
-                            onChange={handleChange}
-                        >
-                            {[5, 4, 3, 2, 1].map(n => (
-                                <option key={n} value={n}>{n} {n == 1 ? "Stella" : "Stelle"}</option>
-                            ))}
-                        </select>
-                        <textarea
-                            name="comment"
-                            value={newReview.comment}
-                            onChange={handleChange}
-                            placeholder="Scrivi la tua recensione"
-                            required
-                        />
-                        <button type="submit">Invia</button>
-                    </form>
+                <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+                    <div className="popup" onClick={e => e.stopPropagation()}>
+                        <h2>Lascia una recensione</h2>
+                        <form onSubmit={handleSubmit} className="popup-form">
+                            <input
+                                type="text"
+                                name="nome"
+                                value={newReview.nome}
+                                onChange={handleChange}
+                                placeholder="Il tuo nome"
+                                required
+                            />
+                            <select
+                                name="voto"
+                                value={newReview.voto}
+                                onChange={handleChange}
+                            >
+                                {[5, 4, 3, 2, 1].map(n => (
+                                    <option key={n} value={n}>{n} {n === 1 ? "Stella" : "Stelle"}</option>
+                                ))}
+                            </select>
+                            <textarea
+                                name="messaggio"
+                                value={newReview.messaggio}
+                                onChange={handleChange}
+                                placeholder="Scrivi la tua recensione"
+                                required
+                            />
+                            <button type="submit">Invia</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
             )}
-
 
             <div className="review-form" onClick={() => setShowPopup(true)}>
                 Lascia una recensione

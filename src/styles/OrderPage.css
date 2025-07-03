@@ -56,3 +56,45 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.table_number-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: #266D47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.table_number-container label {
+  font-size: 10vw;
+  font-weight: 700;
+  color: white;
+}
+.table_number-container input {
+  width: 50%;
+  padding: 1vw;
+  font-size: 5vw;
+  border-radius: 10px;
+  border: none;
+  margin-top: 2vh;
+}
+.table_number-container button {
+  padding: 1vw 2vw;
+  font-size: 5vw;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  color: #266D47;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2vh;
+}
+
+.order-section{
+  color: white;
+}

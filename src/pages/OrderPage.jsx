@@ -4,6 +4,17 @@ import '../styles/OrderPage.css';
 
 function OrderPage() {
   const [ordine, setOrdine] = useState({}); // { idPiatto: quantità }
+  let table;
+  const [tableNumber, setTableNumber] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSelectTable = () => {
+    if (inputValue >= 1 && inputValue <= 50) {
+      setTableNumber(Number(inputValue));
+    } else {
+      alert("Inserisci un numero di tavolo valido (1-50)");
+    }
+  };
 
   const aggiungiPiatto = (id) => {
     setOrdine(prev => ({
@@ -30,6 +41,7 @@ function OrderPage() {
         const piattiOrdinati = menuData
             .filter(p => ordine[p.id])
             .map(p => ({
+            tavolo: tableNumber,
             id: p.id,
             quantità: ordine[p.id]
             }));
@@ -39,7 +51,7 @@ function OrderPage() {
         };
 
         try {
-            const response = await fetch('http://172.30.88.112:3000/api/ordine', { // cambia URL con il tuo endpoint
+            const response = await fetch('http://172.30.88.62:3000/api/ordine', { // cambia URL con il tuo endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -64,7 +76,27 @@ function OrderPage() {
 
   return (
     <>
+        {!tableNumber && (
+          <div className="table_number-container">
+            <label htmlFor="table">Numero Tavolo:</label>
+            <input
+              type="number"
+              id="table"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              min="1"
+              max="50"
+              placeholder="Num. Tavolo"
+            />
+            <button onClick={handleSelectTable}>Seleziona Tavolo</button>
+          </div>
+        )}
       <div className="menu-container">
+        {tableNumber && (
+        <div className="order-section">
+          <h2>Ordini per Tavolo {tableNumber}</h2>
+        </div>
+        )}
         {menuData.map(piatto => (
           <div className="menu-card" key={piatto.id}>
             <div className="card-description">
@@ -82,8 +114,11 @@ function OrderPage() {
 
       {totalePiatti > 0 && (
         <div className="order-footer">
-          <p>{totalePiatti} piatto{totalePiatti > 1 ? 'i' : ''} selezionat{totalePiatti > 1 ? 'i' : 'o'}</p>
-          <button onClick={confermaOrdine}>Manda ordine</button>
+          <p>{totalePiatti} piatt{totalePiatti > 1 ? 'i' : 'o'} selezionat{totalePiatti > 1 ? 'i' : 'o'}</p>
+          <button onClick={async () => {
+            await confermaOrdine();
+            setTableNumber(null);
+          }}>Manda ordine</button>
         </div>
       )}
     </>
