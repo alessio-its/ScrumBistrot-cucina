@@ -93,10 +93,9 @@ Questo documento descrive il sistema di gestione per il ristorante "Bistrot", in
 
 ### Tecnologie Consigliate
 
-- **Backend**: Node.js/Express o Spring Boot
-- **Frontend**: React/Angular
-- **Database**: PostgreSQL con migrazioni
-- **Autenticazione**: JWT
+- **Backend**: Node.js/Express
+- **Frontend**: React/Vite
+
 
 ## Endpoint API Principali
 
