@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1751542926231,
+    "nome": "matteo",
+    "numero": 1,
+    "data": "2025-07-05",
+    "orario": "13:00",
+    "stato": "confermata"
+  },
+  {
+    "id": 1751543877279,
+    "nome": "asdasd",
+    "numero": 2,
+    "data": "2025-07-20",
+    "orario": "19:30",
+    "stato": "rifiutata"
+  }
+]

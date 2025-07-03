@@ -1,6 +1,6 @@
 /* Table.css */
 
-/* Container styling */
+/* Container */
 .table-container {
   width: 100%;
   display: flex;
@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-/* Basic table styling */
+/* Tabella di default */
 .simple-table {
   width: 80%;
   border-collapse: collapse;
@@ -30,7 +30,7 @@
   font-weight: bold;
 }
 
-/* Desktop styling (larger screens) */
+/* Desktop */
 @media (min-width: 1024px) {
   .simple-table {
     width: 90%;
@@ -43,7 +43,7 @@
   }
 }
 
-/* Responsive styling for small screens */
+/* Responsive per schermi piccoli */
 @media (max-width: 600px) {
   .simple-table {
     font-size: 12px;

@@ -1,0 +1,16 @@
+[
+  {
+    "piattiOrdinati": [
+      {
+        "tavolo": 20,
+        "id": 1,
+        "quantità": 2
+      },
+      {
+        "tavolo": 20,
+        "id": 3,
+        "quantità": 1
+      }
+    ]
+  }
+]
